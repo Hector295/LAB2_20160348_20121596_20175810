@@ -10,11 +10,11 @@ public class Proyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idproyecto")
-    private int proyectoid;
+    public int proyectoid;
     @Column(name="nombreProyecto")
-    private String proyectonombre;
+    public String proyectonombre;
     @Column(name="usuario_owner")
-    private String usuariocorreo;
+    public String usuariocorreo;
 
     public int getProyectoid() {
         return proyectoid;
