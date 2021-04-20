@@ -11,9 +11,9 @@
 <body class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse">
-        <a class="navbar-brand" href="/proyecto/listar">Proyectos</a>
-        <a class="navbar-brand" href="/usuario/listar">Usuarios</a>
-        <a class="navbar-brand" href="/area/listar">Areas</a>
+        <a class="navbar-brand" th:href="@{/proyectos/listar}">Proyectos</a>
+        <a class="navbar-brand" th:href="@{/usuario/list}">Usuarios</a>
+        <a class="navbar-brand" th:href="@{/areas/listar}">Areas</a>
     </div>
 </nav>
 <h2>Nuevo Proyecto</h2>
@@ -21,11 +21,11 @@
 <form method="post" th:action="@{'/proyectos/guardar'}">
 
     <label class="small mb-1">Nombre del Proyecto</label>
-    <input class="form-control" name="nombreProyecto" type="text">
+    <input class="form-control" name="nombreproyecto" id="nombreproyecto" type="text">
     <label class="small mb-1">Usuario Responsable</label>
-    <input class="form-control" name="usuarioResponsable" type="text">
+    <input class="form-control" name="usuario_owner" id="usuario_owner" type="text">
 
-    <a th:href="@{/proyectos/listar}" class="btn btn-danger">Cancelar</a>
+    <a th:href="@{'/proyectos/listar'}" class="btn btn-danger">Cancelar</a>
     <button type="submit" class="btn btn-primary">Registrar</button>
 </form>
 </body>

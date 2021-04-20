@@ -12,13 +12,15 @@
 <body class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse">
-        <a class="navbar-brand" href="/proyecto/listar">Proyectos</a>
-        <a class="navbar-brand" href="/usuario/listar">Usuarios</a>
-        <a class="navbar-brand" href="/areas/listar">Areas</a>
+        <a class="navbar-brand" th:href="@{/proyectos/listar}">Proyectos</a>
+        <a class="navbar-brand" th:href="@{/usuario/list}">Usuarios</a>
+        <a class="navbar-brand" th:href="@{/areas/listar}">Areas</a>
     </div>
 </nav>
 <h2>Lista de Areas</h2>
 <a class="btn btn-primary mt-4 mb-4" href="/areas/nuevaArea">Nueva Área</a>
+<div th:if="${msg != null}" class="alert alert-success" th:text="${msg}"></div>
+
 <table class="table table-sm">
     <tr>
         <th>#</th>

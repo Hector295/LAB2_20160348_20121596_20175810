@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Nuevo Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 </head>
-<body>
-
+<body class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse">
+        <a class="navbar-brand" th:href="@{/proyectos/listar}">Proyectos</a>
+        <a class="navbar-brand" th:href="@{/usuario/list}">Usuarios</a>
+        <a class="navbar-brand" th:href="@{/areas/listar}">Areas</a>
+    </div>
+</nav>
+<h2>Nuevo Usuario</h2><hr />
+<form method="post" th:action="@{'/usuario/guardar'}">
+    <div class="form-group">
+        <label for="correo">Correo del Usuario</label>
+        <input name="correo" type="text" class="form-control" id="correo">
+    </div>
+    <div class="mb-3">
+        <label for="idarea" class="form-label">Categoría</label>
+        <select class="form-select" name="idarea" id="idarea">
+            <option th:each="area : ${listaAreas}" th:value="${area.getIdarea()}"
+                    th:text="${area.getNombrearea()}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="nombres">Nombres del Usuario</label>
+        <input name="nombres" type="text" class="form-control" id="nombres">
+    </div>
+    <div class="form-group">
+        <label for="apellidos">Apellidos del Usuario</label>
+        <input name="apellidos" type="text" class="form-control" id="apellidos">
+    </div>
+    <a th:href="@{'/usuario/list'}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
 </body>
 </html>
