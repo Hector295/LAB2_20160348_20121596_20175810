@@ -68,10 +68,10 @@
             </tr>
             <tr th:each="actividad, info : ${listaActividades}">
                 <td th:text="${info.index + 1}"></td>
-                <td th:text="${actividad.getNombreActividad()}"></td>
+                <td th:text="${actividad.getNombreactividad()}"></td>
                 <td th:text="${actividad.getUsuario_owner()}"></td>
                 <td th:text="${actividad.getPeso()}"></td>
-                <td th:text="${actividad.getEstado()}"></td>
+                <td th:text="${actividad.isEstado()}"></td>
             </tr>
         </table>
     </body>

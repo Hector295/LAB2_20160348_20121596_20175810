@@ -28,6 +28,7 @@ public class ProyectosController {
     UsuarioRepository usuarioRepository;
 
 
+
     @GetMapping("/listar")
     public String proyectoList(Model model) {
         model.addAttribute("proyectoList", proyectoRepository.findAll());
