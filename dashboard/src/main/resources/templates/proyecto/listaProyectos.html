@@ -31,7 +31,10 @@
                 <td th:text="${info.index + 1}"></td>
                 <td th:text="${proyecto.getNombreproyecto()}"></td>
                 <td th:text="${proyecto.getUsuario_owner()}"></td>
-
+                <td><a class="btn btn-primary" th:href="@{'/proyectos/editar' + '?id=' + ${proyecto.getIdproyecto()}}">Editar</a>
+                </td>
+                <td><a class="btn btn-danger" th:href="@{'/proyectos/eliminar' + '?id=' + ${proyecto.getIdproyecto()}}">Borrar</a>
+                </td>
             </tr>
         </table>
     </body>
