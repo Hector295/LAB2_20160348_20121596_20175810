@@ -42,7 +42,7 @@ public class UsuarioController {
         if(usuario.getCorreo()==null){
             attributes.addFlashAttribute("mensaje","Usuario creado exitosamente");
         }else {
-            attributes.addFlashAttribute("mensaje","Usuario editado exitosamente");
+            attributes.addFlashAttribute("mensaje1","Usuario editado exitosamente");
         }
         usuarioRepository.save(usuario);
         return "redirect:/usuario/list";
@@ -67,7 +67,7 @@ public class UsuarioController {
         Optional<Usuario> optionalUsuario=usuarioRepository.findById(correo);
         if(optionalUsuario.isPresent()){
             usuarioRepository.deleteById(correo);
-            attributes.addFlashAttribute("mensaje","Usuario borrado exitosamente");
+            attributes.addFlashAttribute("mensaje2","Usuario borrado exitosamente");
         }
         return "redirect:/usuario";
     }

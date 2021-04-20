@@ -51,7 +51,7 @@ public class ProyectosController {
         if (proyecto.getIdproyecto() == 0) {
             attributes.addFlashAttribute("mensaje", "Proyecto creado exitosamente");
         } else {
-            attributes.addFlashAttribute("mensaje", "Proyecto editado exitosamente");
+            attributes.addFlashAttribute("mensaje1", "Proyecto editado exitosamente");
         }
         proyectoRepository.save(proyecto);
         return "redirect:/proyectos/listar";
@@ -80,7 +80,7 @@ public class ProyectosController {
         Optional<Proyecto> optionalProyecto = proyectoRepository.findById(id);
         if (optionalProyecto.isPresent()) {
             proyectoRepository.deleteById(id);
-            attributes.addFlashAttribute("mensaje1", "Proyecto borrado exitosamente");
+            attributes.addFlashAttribute("mensaje2", "Proyecto borrado exitosamente");
         }
         return "redirect:/proyectos/listar";
     }

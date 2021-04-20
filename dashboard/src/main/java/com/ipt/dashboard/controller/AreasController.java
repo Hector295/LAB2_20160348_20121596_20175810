@@ -44,7 +44,7 @@ public class AreasController {
         if (areas.getIdarea()==0){
             attr.addFlashAttribute("msg", "Área creada exitosamente");
         }else{
-            attr.addFlashAttribute("msg", "Área actualizada exitosamente");
+            attr.addFlashAttribute("msg1", "Área actualizada exitosamente");
         }
         areasRepository.save(areas);
         return "redirect:/areas/listar";
@@ -70,7 +70,7 @@ public class AreasController {
 
         if(shipperOpt.isPresent()) {
             areasRepository.deleteById(id);
-            attr.addFlashAttribute("msg", "Eliminado exitosamente");
+            attr.addFlashAttribute("msg2", "Área eliminada exitosamente");
         }
         return "redirect:/areas/listar";
     }

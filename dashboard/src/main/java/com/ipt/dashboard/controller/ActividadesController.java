@@ -51,9 +51,9 @@ public class ActividadesController {
     public String guardarActividad(Actividad actividad, RedirectAttributes attributes,
                                    Model model,@RequestParam("id") int id){
         if(actividad.getIdactividad()==0){
-            attributes.addFlashAttribute("mensaje2","Usuario creado exitosamente");
+            attributes.addFlashAttribute("mensaje2","Actividad creada exitosamente");
         }else {
-            attributes.addFlashAttribute("mensaje3","Usuario editado exitosamente");
+            attributes.addFlashAttribute("mensaje3","Actividad editada exitosamente");
         }
         Optional<Proyecto> optionalProyecto=proyectoRepository.findById(id);
         Proyecto proyecto= optionalProyecto.get();
@@ -88,7 +88,7 @@ public class ActividadesController {
         Optional<Actividad> optionalActividad=actividadRepository.findById(id);
         if(optionalActividad.isPresent()){
             actividadRepository.deleteById(id);
-            attributes.addFlashAttribute("mensaje4","Usuario borrado exitosamente");
+            attributes.addFlashAttribute("mensaje4","Actividad borrada exitosamente");
         }
         return "redirect:/proyectos/editar";
     }

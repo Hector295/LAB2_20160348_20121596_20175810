@@ -25,7 +25,7 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Area</label>
-        <select class="form-select" th:field="*{idarea}">
+        <select class="form-control" th:field="*{idarea}">
             <option th:each="area : ${listaAreas}" th:value="${area.getIdarea()}"
                     th:text="${area.getNombrearea()}"
                     ></option>
