@@ -1,6 +1,7 @@
 package com.ipt.dashboard.controller;
 
 
+import com.ipt.dashboard.entity.Actividad;
 import com.ipt.dashboard.entity.Proyecto;
 import com.ipt.dashboard.entity.Usuario;
 import com.ipt.dashboard.repository.ActividadRepository;
@@ -61,12 +62,12 @@ public class ProyectosController {
     public String editarProyecto(@RequestParam("id") int id,
                                     Model model) {
         Optional<Proyecto> optionalProyecto = proyectoRepository.findById(id);
-
+        List<Actividad> actividadList=actividadRepository.findByIdproyecto(id);
         if (optionalProyecto.isPresent()) {
             Proyecto proyecto = optionalProyecto.get();
             model.addAttribute("proyecto", proyecto);
             model.addAttribute("listaUsuario", usuarioRepository.findAll());
-            model.addAttribute("listaActividades",actividadRepository.findAll());
+            model.addAttribute("listaActividades",actividadList);
             return "/proyecto/editarProyecto";
         } else {
             return "redirect:/proyectos";
