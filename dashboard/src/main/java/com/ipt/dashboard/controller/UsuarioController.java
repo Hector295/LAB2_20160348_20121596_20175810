@@ -40,7 +40,7 @@ public class UsuarioController {
     @PostMapping("/guardar")
     public String guardarUsuario(Usuario usuario, RedirectAttributes attributes){
         if(usuario.getCorreo()==null){
-            attributes.addFlashAttribute("mensaje","Usuario creado exitosamente");
+            attributes.addFlashAttribute("mensajes","Usuario creado exitosamente");
         }else {
             attributes.addFlashAttribute("mensaje1","Usuario editado exitosamente");
         }

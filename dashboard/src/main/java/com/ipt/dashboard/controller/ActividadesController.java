@@ -83,11 +83,14 @@ public class ActividadesController {
         }
     }
     @GetMapping("/eliminar")
-    public String eliminarActividad(@RequestParam("id") int id,
-                                  RedirectAttributes attributes){
+    public String eliminarActividad(@RequestParam("id2") int id,Model model,
+                                  RedirectAttributes attributes, @RequestParam("id") int id_pro){
         Optional<Actividad> optionalActividad=actividadRepository.findById(id);
+        Optional<Proyecto> optionalProyecto=proyectoRepository.findById(id_pro);
         if(optionalActividad.isPresent()){
+            Proyecto proyecto =optionalProyecto.get();
             actividadRepository.deleteById(id);
+            model.addAttribute("proyecto",proyecto);
             attributes.addFlashAttribute("mensaje4","Actividad borrada exitosamente");
         }
         return "redirect:/proyectos/editar";
