@@ -87,12 +87,18 @@ public class ActividadesController {
                                   RedirectAttributes attributes, @RequestParam("id") int id_pro){
         Optional<Actividad> optionalActividad=actividadRepository.findById(id);
         Optional<Proyecto> optionalProyecto=proyectoRepository.findById(id_pro);
+        String id2=null;
         if(optionalActividad.isPresent()){
             Proyecto proyecto =optionalProyecto.get();
             actividadRepository.deleteById(id);
             model.addAttribute("proyecto",proyecto);
             attributes.addFlashAttribute("mensaje4","Actividad borrada exitosamente");
+            id2= String.valueOf(proyecto.getIdproyecto());
         }
-        return "redirect:/proyectos/editar";
+        String url="redirect:/proyectos/editar?id=";
+
+
+        System.out.println(url+id2);
+        return url+id2;
     }
 }
