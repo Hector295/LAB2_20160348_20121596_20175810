@@ -9,34 +9,31 @@ public class Proyecto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idproyecto")
-    public int proyectoid;
-    @Column(name="nombreProyecto")
-    public String proyectonombre;
-    @Column(name="usuario_owner")
-    public String usuariocorreo;
+    public int idproyecto;
+    public String nombreproyecto;
+    public String usuario_owner;
 
-    public int getProyectoid() {
-        return proyectoid;
+    public int getIdproyecto() {
+        return idproyecto;
     }
 
-    public void setProyectoid(int proyectoid) {
-        this.proyectoid = proyectoid;
+    public void setIdproyecto(int idproyecto) {
+        this.idproyecto = idproyecto;
     }
 
-    public String getProyectonombre() {
-        return proyectonombre;
+    public String getNombreproyecto() {
+        return nombreproyecto;
     }
 
-    public void setProyectonombre(String proyectonombre) {
-        this.proyectonombre = proyectonombre;
+    public void setNombreproyecto(String nombreproyecto) {
+        this.nombreproyecto = nombreproyecto;
     }
 
-    public String getUsuariocorreo() {
-        return usuariocorreo;
+    public String getUsuario_owner() {
+        return usuario_owner;
     }
 
-    public void setUsuariocorreo(String usuariocorreo) {
-        this.usuariocorreo = usuariocorreo;
+    public void setUsuario_owner(String usuario_owner) {
+        this.usuario_owner = usuario_owner;
     }
 }

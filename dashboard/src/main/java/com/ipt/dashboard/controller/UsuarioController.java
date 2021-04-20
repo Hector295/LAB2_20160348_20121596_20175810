@@ -24,7 +24,7 @@ public class UsuarioController {
     public String listarUsaurios(Model model){
         List<Usuario> lista = usuarioRepository.findAll();
         model.addAttribute("listaUsuarios",lista);
-    return "usuario/listaUsuario";
+    return "/proyecto/usuario/listaUsuario";
     }
     @GetMapping("/nuevo")
     public String nuevoUsuario() {
@@ -48,7 +48,7 @@ public class UsuarioController {
         if(optionalUsuario.isPresent()){
             Usuario usuario = optionalUsuario.get();
             model.addAttribute("usuario",usuario);
-            return "usuario/editarUsuario";
+            return "/proyecto/usuario/editarUsuario";
         }else {
             return "redirect:/usuario";
         }
