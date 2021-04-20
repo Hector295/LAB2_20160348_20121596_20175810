@@ -21,10 +21,10 @@ public class AreasController {
     @Autowired
     AreasRepository areasRepository;
 
-    @GetMapping(value={"", "/lista"})
+    @GetMapping(value={"", "/listar"})
     public String listaAreas (Model model){
-        model.addAttribute("listaAreas", areasRepository.findAll());
-        return "areas/listaAreas";
+        model.addAttribute("lista", areasRepository.findAll());
+        return "/areas/listaAreas";
     }
 
     @GetMapping("/nuevaArea")
@@ -43,19 +43,18 @@ public class AreasController {
             attr.addFlashAttribute("msg", "Área actualizada exitosamente");
         }
         areasRepository.save(areas);
-        return "redirect:/areas/lista";
+        return "redirect:/areas/listar";
     }
 
     @GetMapping("/edit")
     public String editarArea(@RequestParam("id") int id, Model model){
         Optional<Areas> shipperOpt = areasRepository.findById(id);
-
         if(shipperOpt.isPresent()){
             Areas area = shipperOpt.get();
-            model.addAttribute("area",area);
+            model.addAttribute("areaEditable",area);
             return "areas/editForm"; //Ruta del directorio del html
         }else{
-            return "redirect:/areas/lista"; //Redirige al controlador shipper/
+            return "redirect:/areas/listar"; //Redirige al controlador areas/
         }
     }
 
@@ -68,7 +67,7 @@ public class AreasController {
             areasRepository.deleteById(id);
             attr.addFlashAttribute("msg", "Eliminado exitosamente");
         }
-        return "redirect:/areas/lista";
+        return "redirect:/areas/listar";
     }
 
 }
