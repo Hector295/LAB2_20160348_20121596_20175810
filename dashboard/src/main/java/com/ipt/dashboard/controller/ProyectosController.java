@@ -19,13 +19,11 @@ public class ProyectosController {
     @Autowired
     ProyectoRepository proyectoRepository;
 
-    @Autowired
-    UsuarioRepository usuarioRepository;
 
     @GetMapping("/listar")
     public String proyectoList(Model model) {
         model.addAttribute("proyectoList", proyectoRepository.findAll());
-        return "/proyecto/listaProyectos";
+        return "proyecto/listaProyectos";
     }
 
 }

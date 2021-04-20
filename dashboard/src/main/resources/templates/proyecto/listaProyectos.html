@@ -29,11 +29,10 @@
     </tr>
     <tr th:each="proyecto, info : ${proyectoList}">
         <td th:text="${info.index + 1}"></td>
-        <td th:text="${proyecto.getProyectoid()}"></td>
-        <td th:text="${proyecto.getProyectonombre()}"></td>
-        <td th:text="${proyecto.getUsuariocorreo()}"></td>
-        <td><a class="btn btn-warning" th:href="@{'/Proyectos/editar?id=' + ${proyecto.getProyectoid()}}">Editar</a></td>
-        <td><a class="btn btn-danger" th:href="@{'/Proyectos/borrar?id=' + ${proyecto.getProyectoid()}}">Borrar</a></td>
+        <td th:text="${proyecto.idproyecto}"></td>
+        <td th:text="${proyecto.nombreproyecto}"></td>
+        <td th:text="${proyecto.usuario_owner}"></td>
+
   </tr>
 </table>
 </body>
