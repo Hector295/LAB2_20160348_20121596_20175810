@@ -22,11 +22,34 @@
     <input type="hidden" th:field="*{idarea}">
     <div class="form-group">
         <label for="nombrearea">Nombre del área</label>
-        <input  type="text" class="form-control" th:field="*{nombrearea}">
+        <input type="text" class="form-control" th:field="*{nombrearea}">
     </div>
     <a th:href="@{'/areas/listar'}" class="btn btn-danger">Cancelar</a>
     <button type="submit" class="btn btn-primary">Registrar</button>
 </form>
+<div></div>
+<hr/>
+<h2>Lista de usuarios del área</h2>
+<div></div>
+
+
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>Correo del usuario</th>
+        <th>Nombres del usuario</th>
+        <th>Apellidos del usuario</th>
+        <th></th>
+    </tr>
+    <tr th:each="usuarios, v : ${listaUsuarios}">
+        <td th:text="${v.index + 1}"></td>
+        <td th:text="${usuarios.correo}"></td>
+        <td th:text="${usuarios.nombres}"></td>
+        <td th:text="${usuarios.apellidos}"></td>
+    </tr>
+</table>
+
+
 </body>
 </html>
 
