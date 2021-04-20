@@ -37,41 +37,41 @@ public class ActividadesController {
     public String nuevoActividad(Model model) {
         List<Usuario> lista = usuarioRepository.findAll();
         model.addAttribute("listaUsuarios",lista);
-        return "/P/nuevoUsuario";
+        return "/actividad/nuevoActividad";
     }
 
     @PostMapping("/guardar")
-    public String guardarUsuario(Usuario usuario, RedirectAttributes attributes){
-        if(usuario.getCorreo()==null){
+    public String guardarActividad(Actividad actividad, RedirectAttributes attributes){
+        if(actividad.getIdactividad()==0){
             attributes.addFlashAttribute("mensaje","Usuario creado exitosamente");
         }else {
             attributes.addFlashAttribute("mensaje","Usuario editado exitosamente");
         }
-        usuarioRepository.save(usuario);
-        return "redirect:/usuario/list";
+        actividadRepository.save(actividad);
+        return "redirect:/proyecto/editarProyecto";
     }
     @GetMapping("/editar")
-    public String editarUsuario(Model model,
-                                @RequestParam("correo") String correo){
-        Optional<Usuario> optionalUsuario=usuarioRepository.findById(correo);
-        List<Areas> lista = areasRepository.findAll();
-        model.addAttribute("listaAreas",lista);
-        if(optionalUsuario.isPresent()){
-            Usuario usuario = optionalUsuario.get();
-            model.addAttribute("usuario",usuario);
-            return "usuario/editarUsuario";
+    public String editarActividad(Model model,
+                                @RequestParam("id") int id){
+        Optional<Actividad> optionalActividad=actividadRepository.findById(id);
+        List<Usuario> lista = usuarioRepository.findAll();
+        model.addAttribute("listaUsuarios",lista);
+        if(optionalActividad.isPresent()){
+            Actividad actividad = optionalActividad.get();
+            model.addAttribute("usuario",actividad);
+            return "actividad/editarActividad";
         }else {
-            return "redirect:/usuario";
+            return "redirect:/proyectos/editar";
         }
     }
     @GetMapping("/eliminar")
-    public String eliminarUsuario(@RequestParam("correo") String correo,
+    public String eliminarActividad(@RequestParam("id") int id,
                                   RedirectAttributes attributes){
-        Optional<Usuario> optionalUsuario=usuarioRepository.findById(correo);
-        if(optionalUsuario.isPresent()){
-            usuarioRepository.deleteById(correo);
+        Optional<Actividad> optionalActividad=actividadRepository.findById(id);
+        if(optionalActividad.isPresent()){
+            actividadRepository.deleteById(id);
             attributes.addFlashAttribute("mensaje","Usuario borrado exitosamente");
         }
-        return "redirect:/usuario";
+        return "redirect:/proyectos/editar";
     }
 }
