@@ -34,6 +34,7 @@ public class ActividadesController {
     @GetMapping({"","/list"})
     public String listarActividades(Model model){
         List<Actividad> lista = actividadRepository.findAll();
+
         model.addAttribute("listaActividades",lista);
         return "/proyecto/editarProyecto";
     }

@@ -46,12 +46,12 @@
         <br>
         <h5>Lista de Actividades del Proyecto</h5>
         <h7>Progreso del Proyecto</h7>
-        <!--<div class="progress" th:if="${pesoActividades != 0}">-->
-        <!--    <div class="progress-bar" role="progressbar"
+        <div class="progress" th:if="${pesoActividades != 0}">
+            <div class="progress-bar" role="progressbar"
         th:attr="aria-valuenow=${pesoActividadesFinalizadas/pesoActividades*100}"
         th:style="'width:'+ ${pesoActividadesFinalizadas/pesoActividades*100}+'%'"
-        aria-valuemin="0" aria-valuemax="100" th:text="${pesoActividadesFinalizadas/pesoActividades*100}+'%'"></div>-->
-        <!--</div>-->
+        aria-valuemin="0" aria-valuemax="100" th:text="${pesoActividadesFinalizadas/pesoActividades*100}+'%'"></div>
+        </div>
         <br>
         <a th:href="@{'/actividades/nuevo?id='+${proyecto.getIdproyecto()}}" class="btn btn-primary mt-4 mb-4">Nueva Actividad</a>
         <div th:if="${mensaje2 != null}" th:text="${mensaje2}" class="alert alert-success" role="alert"></div>
@@ -72,8 +72,8 @@
                 <td th:text="${actividad.nombreactividad}"></td>
                 <td th:text="${actividad.getUsuario_owner()}"></td>
                 <td th:text="${actividad.getPeso()}"></td>
-                <td th:if="${actividad.isEstado() == true}" th:text="${'Finalizado'}"></td>
-                <td th:if="${actividad.isEstado() == false}" th:text="${'Pendiente'}"></td>
+                <td th:if="${actividad.getEstado() == true}" th:text="${'Finalizado'}"></td>
+                <td th:if="${actividad.getEstado() == false}" th:text="${'Pendiente'}"></td>
                 <td><a class="btn btn-primary" th:href="@{'/actividades/editar?id2=' + ${actividad.getIdactividad()}+
                 '&id='+${proyecto.getIdproyecto()}}">Editar</a>
                 </td>

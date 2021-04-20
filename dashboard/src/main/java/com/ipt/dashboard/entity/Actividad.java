@@ -12,42 +12,10 @@ public class Actividad {
     public int idactividad;
     public String nombreactividad;
     public String usuario_owner;
-    public float peso;
-    public boolean estado;
-    public  String descripcion;
+    public double peso;
+    public int estado;
+    public String descripcion;
     public int idproyecto;
-
-    public float getPeso() {
-        return peso;
-    }
-
-    public void setPeso(float peso) {
-        this.peso = peso;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public int getIdproyecto() {
-        return idproyecto;
-    }
-
-    public void setIdproyecto(int idproyecto) {
-        this.idproyecto = idproyecto;
-    }
 
     public int getIdactividad() {
         return idactividad;
@@ -71,6 +39,40 @@ public class Actividad {
 
     public void setUsuario_owner(String usuario_owner) {
         this.usuario_owner = usuario_owner;
-    }}
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getIdproyecto() {
+        return idproyecto;
+    }
+
+    public void setIdproyecto(int idproyecto) {
+        this.idproyecto = idproyecto;
+    }
+}
+
 
 
