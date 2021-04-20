@@ -77,7 +77,8 @@
                 <td><a class="btn btn-primary" th:href="@{'/actividades/editar?id2=' + ${actividad.getIdactividad()}+
                 '&id='+${proyecto.getIdproyecto()}}">Editar</a>
                 </td>
-                <td><a class="btn btn-danger" th:href="@{'/actividades/eliminar?id=' + ${actividad.getIdactividad()}}">Borrar</a>
+                <td><a class="btn btn-danger" th:href="@{'/actividades/eliminar?id2=' + ${actividad.getIdactividad()}+
+                '&id='+${proyecto.getIdproyecto()}}">Borrar</a>
                 </td>
 
             </tr>
