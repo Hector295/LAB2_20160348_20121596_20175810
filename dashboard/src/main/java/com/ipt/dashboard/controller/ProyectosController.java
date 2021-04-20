@@ -24,6 +24,9 @@ public class ProyectosController {
     @Autowired
     ProyectoRepository proyectoRepository;
 
+    @Autowired
+    UsuarioRepository usuarioRepository;
+
 
     @GetMapping("/listar")
     public String proyectoList(Model model) {
@@ -32,7 +35,9 @@ public class ProyectosController {
     }
 
     @GetMapping("/nuevo")
-    public String nuevoProyecto() {
+    public String nuevoProyecto(Model model) {
+        List<Usuario> listausuario= usuarioRepository.findAll();
+        model.addAttribute("listausuario",listausuario);
         return "proyecto/nuevoProyecto";
     }
 
