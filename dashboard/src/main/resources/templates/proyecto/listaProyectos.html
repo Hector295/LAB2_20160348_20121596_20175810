@@ -19,6 +19,7 @@
         </nav>
         <h2>Lista de Proyectos</h2>
         <a class="btn btn-primary mt-4 mb-4" th:href="@{/proyectos/nuevo}">Nuevo Proyecto</a>
+        <div th:if="${mensaje != null}" th:text="${mensaje}" class="alert alert-success" role="alert"></div>
         <table class="table table-sm">
             <tr>
                 <th>#</th>
