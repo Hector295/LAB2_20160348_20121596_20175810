@@ -16,12 +16,12 @@
                 <a class="navbar-brand" th:href="@{/areas/listar}">Areas</a>
             </div>
         </nav>
-        <h2>Nuevo Proyecto</h2>
+        <h2>Nuevo Actividad</h2>
         <hr/>
-        <form method="post" th:action="@{'/proyectos/guardar'}">
+        <form method="post" th:action="@{'/actividades/guardar'}">
 
-            <label class="form-label">Nombre del Proyecto</label>
-            <input class="form-control" name="nombreproyecto" id="nombreproyecto" type="text">
+            <label class="form-label">Nombre de la Actividad</label>
+            <input class="form-control" name="nombreactividad" id="nombreactividad" type="text">
             <div class="mb-3">
                 <label for="usuario_owner" class="form-label">Usuario Responsable</label><br/>
                 <select class="form-control" name="usuario_owner" id="usuario_owner">
