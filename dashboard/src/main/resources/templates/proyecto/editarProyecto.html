@@ -72,6 +72,11 @@
                 <td th:text="${actividad.getUsuario_owner()}"></td>
                 <td th:text="${actividad.getPeso()}"></td>
                 <td th:text="${actividad.isEstado()}"></td>
+                <td><a class="btn btn-primary" th:href="@{'/actividades/editar?id=' + ${actividad.getIdactividad()}}">Editar</a>
+                </td>
+                <td><a class="btn btn-danger" th:href="@{'/actividades/eliminar?id=' + ${actividad.getIdactividad()}}">Borrar</a>
+                </td>
+
             </tr>
         </table>
     </body>
