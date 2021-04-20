@@ -52,7 +52,7 @@ public class ProyectosController {
 
     @GetMapping("/editar")
     public String editarProyecto(Model model,
-                                @RequestParam("id") int id){
+                                 @RequestParam("id") int id){
         Optional<Proyecto> optionalProyecto=proyectoRepository.findById(id);
         if(optionalProyecto.isPresent()){
             Proyecto proyecto = optionalProyecto.get();
@@ -66,7 +66,7 @@ public class ProyectosController {
 
     @GetMapping("/eliminar")
     public String eliminarProyecto(@RequestParam("id") int id,
-                                  RedirectAttributes attributes){
+                                   RedirectAttributes attributes){
         Optional<Proyecto> optionalProyecto=proyectoRepository.findById(id);
         if(optionalProyecto.isPresent()){
             proyectoRepository.deleteById(id);
