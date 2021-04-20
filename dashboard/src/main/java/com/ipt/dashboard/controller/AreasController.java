@@ -15,7 +15,7 @@ import java.awt.geom.Area;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/Areas")
+@RequestMapping("/areas")
 public class AreasController {
 
     @Autowired
@@ -49,13 +49,12 @@ public class AreasController {
     @GetMapping("/edit")
     public String editarArea(@RequestParam("id") int id, Model model){
         Optional<Areas> shipperOpt = areasRepository.findById(id);
-
         if(shipperOpt.isPresent()){
             Areas area = shipperOpt.get();
-            model.addAttribute("area",area);
+            model.addAttribute("areaEditable",area);
             return "areas/editForm"; //Ruta del directorio del html
         }else{
-            return "redirect:/areas/listar"; //Redirige al controlador shipper/
+            return "redirect:/areas/listar"; //Redirige al controlador areas/
         }
     }
 

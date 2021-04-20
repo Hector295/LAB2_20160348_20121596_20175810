@@ -28,10 +28,9 @@
     </tr>
     <tr th:each="areas, e : ${lista}">
         <td th:text="${e.index + 1}"></td>
-        <td th:text="${areas.nombreArea}"></td>
-        <td th:text="${shipper.phone}"></td>
-        <td><a class="btn btn-info" th:href="@{'/shipper/edit?id=' + ${shipper.shipperid}}">Editar</a></td>
-        <td><a class="btn btn-danger" th:href="@{'/shipper/delete?id=' + ${shipper.shipperid}}">Borrar</a>
+        <td th:text="${areas.nombrearea}"></td>
+        <td><a class="btn btn-info" th:href="@{'/areas/edit?id=' + ${areas.idarea}}">Editar</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/areas/delete?id=' + ${areas.idarea}}">Borrar</a>
         </td>
     </tr>
 
