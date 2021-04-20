@@ -73,7 +73,7 @@ public class ProyectosController {
             proyectoRepository.deleteById(id);
             attributes.addFlashAttribute("mensaje", "Proyecto borrado exitosamente");
         }
-        return "redirect:/proyectos";
+        return "redirect:/proyectos/listar";
     }
 
 }
