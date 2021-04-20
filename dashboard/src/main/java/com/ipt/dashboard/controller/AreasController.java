@@ -15,16 +15,16 @@ import java.awt.geom.Area;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/areas")
+@RequestMapping("/Areas")
 public class AreasController {
 
     @Autowired
     AreasRepository areasRepository;
 
-    @GetMapping(value={"", "/lista"})
+    @GetMapping(value={"", "/listar"})
     public String listaAreas (Model model){
-        model.addAttribute("listaAreas", areasRepository.findAll());
-        return "areas/listaAreas";
+        model.addAttribute("lista", areasRepository.findAll());
+        return "/areas/listaAreas";
     }
 
     @GetMapping("/nuevaArea")
@@ -43,7 +43,7 @@ public class AreasController {
             attr.addFlashAttribute("msg", "Área actualizada exitosamente");
         }
         areasRepository.save(areas);
-        return "redirect:/areas/lista";
+        return "redirect:/areas/listar";
     }
 
     @GetMapping("/edit")
@@ -55,7 +55,7 @@ public class AreasController {
             model.addAttribute("area",area);
             return "areas/editForm"; //Ruta del directorio del html
         }else{
-            return "redirect:/areas/lista"; //Redirige al controlador shipper/
+            return "redirect:/areas/listar"; //Redirige al controlador shipper/
         }
     }
 
@@ -68,7 +68,7 @@ public class AreasController {
             areasRepository.deleteById(id);
             attr.addFlashAttribute("msg", "Eliminado exitosamente");
         }
-        return "redirect:/areas/lista";
+        return "redirect:/areas/listar";
     }
 
 }
