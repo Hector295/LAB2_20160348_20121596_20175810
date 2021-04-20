@@ -3,6 +3,7 @@ package com.ipt.dashboard.controller;
 
 import com.ipt.dashboard.entity.Proyecto;
 import com.ipt.dashboard.entity.Usuario;
+import com.ipt.dashboard.repository.ActividadRepository;
 import com.ipt.dashboard.repository.ProyectoRepository;
 import com.ipt.dashboard.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class ProyectosController {
     ProyectoRepository proyectoRepository;
     @Autowired
     UsuarioRepository usuarioRepository;
+    @Autowired
+    ActividadRepository actividadRepository;
 
 
     @GetMapping("/listar")
@@ -62,6 +65,7 @@ public class ProyectosController {
             Proyecto proyecto = optionalProyecto.get();
             model.addAttribute("proyecto", proyecto);
             model.addAttribute("listaUsuario", usuarioRepository.findAll());
+            model.addAttribute("listaActividades",actividadRepository.findAll());
             return "/proyecto/editarProyecto";
         } else {
             return "redirect:/proyectos";
