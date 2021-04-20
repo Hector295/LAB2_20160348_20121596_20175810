@@ -44,7 +44,7 @@ public class ProyectosController {
         if(proyecto.getNombreproyecto()==null){
             attributes.addFlashAttribute("mensaje","Proyecto creado exitosamente");
         }else {
-            attributes.addFlashAttribute("mensaje","Usuario editado exitosamente");
+            attributes.addFlashAttribute("mensaje","Proyecto editado exitosamente");
         }
         proyectoRepository.save(proyecto);
         return "redirect:/proyectos/listar";
@@ -57,6 +57,7 @@ public class ProyectosController {
         if(optionalProyecto.isPresent()){
             Proyecto proyecto = optionalProyecto.get();
             model.addAttribute("proyecto",proyecto);
+            model.addAttribute("listaUsuario",usuarioRepository.findAll());
             return "/proyecto/editarProyecto";
         }else {
             return "redirect:/proyectos";
