@@ -3,9 +3,11 @@ package com.ipt.dashboard.controller;
 
 import com.ipt.dashboard.entity.Actividad;
 import com.ipt.dashboard.entity.Areas;
+import com.ipt.dashboard.entity.Proyecto;
 import com.ipt.dashboard.entity.Usuario;
 import com.ipt.dashboard.repository.ActividadRepository;
 import com.ipt.dashboard.repository.AreasRepository;
+import com.ipt.dashboard.repository.ProyectoRepository;
 import com.ipt.dashboard.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,8 @@ public class ActividadesController {
     UsuarioRepository usuarioRepository;
     @Autowired
     ActividadRepository actividadRepository;
+    @Autowired
+    ProyectoRepository proyectoRepository;
 
     @GetMapping({"","/list"})
     public String listarActividades(Model model){
@@ -34,31 +38,45 @@ public class ActividadesController {
         return "/proyecto/editarProyecto";
     }
     @GetMapping("/nuevo")
-    public String nuevoActividad(Model model) {
+    public String nuevoActividad(Model model,@RequestParam("id") int id) {
+        Optional<Proyecto> optionalProyecto=proyectoRepository.findById(id);
+        Proyecto proyecto=optionalProyecto.get();
+        model.addAttribute("proyecto",proyecto);
         List<Usuario> lista = usuarioRepository.findAll();
         model.addAttribute("listaUsuarios",lista);
         return "/actividad/nuevoActividad";
     }
 
     @PostMapping("/guardar")
-    public String guardarActividad(Actividad actividad, RedirectAttributes attributes){
+    public String guardarActividad(Actividad actividad, RedirectAttributes attributes,
+                                   Model model,@RequestParam("id") int id){
         if(actividad.getIdactividad()==0){
             attributes.addFlashAttribute("mensaje2","Usuario creado exitosamente");
         }else {
             attributes.addFlashAttribute("mensaje3","Usuario editado exitosamente");
         }
+        Optional<Proyecto> optionalProyecto=proyectoRepository.findById(id);
+        Proyecto proyecto= optionalProyecto.get();
+        System.out.println(proyecto.getIdproyecto());
         actividadRepository.save(actividad);
-        return "redirect:/proyecto/editarProyecto";
+        String url="redirect:/proyectos/editar?id=";
+        String id2=null;
+         id2= String.valueOf(proyecto.getIdproyecto());
+        System.out.println(url+id2);
+        return url+id2;
     }
     @GetMapping("/editar")
     public String editarActividad(Model model,
-                                @RequestParam("id") int id){
+                                @RequestParam("id2") int id,@RequestParam("id") int id_proyecto){
         Optional<Actividad> optionalActividad=actividadRepository.findById(id);
         List<Usuario> lista = usuarioRepository.findAll();
+        Optional<Proyecto> listproyecto =proyectoRepository.findById(id_proyecto);
         model.addAttribute("listaUsuarios",lista);
         if(optionalActividad.isPresent()){
             Actividad actividad = optionalActividad.get();
+            Proyecto proyecto = listproyecto.get();
             model.addAttribute("actividad",actividad);
+            model.addAttribute("proyecto",proyecto);
             return "actividad/editarActividad";
         }else {
             return "redirect:/proyectos/editar";

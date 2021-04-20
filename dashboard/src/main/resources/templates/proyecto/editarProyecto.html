@@ -53,7 +53,7 @@
         aria-valuemin="0" aria-valuemax="100" th:text="${pesoActividadesFinalizadas/pesoActividades*100}+'%'"></div>-->
         <!--</div>-->
         <br>
-        <a class="btn btn-primary mt-4 mb-4">Nueva Actividad</a>
+        <a th:href="@{'/actividades/nuevo?id='+${proyecto.getIdproyecto()}}" class="btn btn-primary mt-4 mb-4">Nueva Actividad</a>
         <div th:if="${mensaje2 != null}" th:text="${mensaje2}" class="alert alert-success" role="alert"></div>
         <div th:if="${mensaje3 != null}" th:text="${mensaje3}" class="alert alert-danger" role="alert"></div>
         <div th:if="${mensaje4!= null}" th:text="${mensaje4}" class="alert alert-warning" role="alert"></div>
@@ -72,8 +72,10 @@
                 <td th:text="${actividad.nombreactividad}"></td>
                 <td th:text="${actividad.getUsuario_owner()}"></td>
                 <td th:text="${actividad.getPeso()}"></td>
-                <td th:text="${actividad.isEstado()}"></td>
-                <td><a class="btn btn-primary" th:href="@{'/actividades/editar?id=' + ${actividad.getIdactividad()}}">Editar</a>
+                <td th:if="${actividad.isEstado() == true}" th:text="${'Finalizado'}"></td>
+                <td th:if="${actividad.isEstado() == false}" th:text="${'Pendiente'}"></td>
+                <td><a class="btn btn-primary" th:href="@{'/actividades/editar?id2=' + ${actividad.getIdactividad()}+
+                '&id='+${proyecto.getIdproyecto()}}">Editar</a>
                 </td>
                 <td><a class="btn btn-danger" th:href="@{'/actividades/eliminar?id=' + ${actividad.getIdactividad()}}">Borrar</a>
                 </td>

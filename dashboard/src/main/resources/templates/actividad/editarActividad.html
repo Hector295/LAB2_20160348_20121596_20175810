@@ -18,13 +18,14 @@
         </nav>
         <h2>Editar Actividad</h2>
         <hr/>
-        <form method="post" th:action="@{'/actividades/guardar'}" th:object="${actividad}">
+        <form method="post" th:action="@{'/actividades/guardar?id='+${proyecto.getIdproyecto()}}" th:object="${actividad}">
             <div class="form-row">
                 <input class="form-control" th:field="*{idactividad}" type="hidden">
                 <div class="col-md-8 mb-4">
                     <div class="form-group">
                         <label class="form-label">Nombre de la actividad</label>
                         <input class="form-control" th:field="*{nombreactividad}" type="text"/>
+                        <input class="form-control" th:field="*{idproyecto}" type="hidden"/>
                     </div>
                 </div>
                 <div class="col-md-8 mb-4">
@@ -43,12 +44,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-8 mb-4">
-                    <div class="form-group">
-                        <label class="form-label">Nombre del Proyecto</label>
-                        <input class="form-control" th:field="*{nombreactividad}" type="text"/>
-                    </div>
-                </div>
+
                 <div class="col-md-8 mb-4">
                     <div class="form-group">
                         <label class="form-label">Peso de la actividad</label>
@@ -58,12 +54,16 @@
                 <div class="col-md-8 mb-4">
                     <div class="form-group">
                         <label class="form-label">Estado</label>
-                        <input class="form-control" th:field="*{estado}" type="text"/>
+                        <select th:field="*{estado}">
+                            <option th:value="${true}">Finalizado</option>
+                            <option th:value="${false}">Pendiente</option>
+                        </select>
+
                     </div>
                 </div>
             </div>
             <div class="form-group mt-4">
-                <a th:href="@{'/proyectos/editar'}" class="btn btn-danger">Cancelar</a>
+                <a th:href="@{'/proyectos/editar?id='+${proyecto.getIdproyecto()}}" class="btn btn-danger">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
         </form>

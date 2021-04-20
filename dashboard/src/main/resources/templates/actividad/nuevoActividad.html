@@ -18,12 +18,13 @@
         </nav>
         <h2>Nuevo Actividad</h2>
         <hr/>
-        <form method="post" th:action="@{'/actividades/guardar'}">
+        <form method="post" th:action="@{'/actividades/guardar?id='+${proyecto.getIdproyecto()}}">
 
             <label class="form-label">Nombre de la Actividad</label>
             <input class="form-control" name="nombreactividad" id="nombreactividad" type="text">
             <label class="form-label">Descripción de la Actividad</label>
             <input class="form-control" name="descripcion" id="descripcion" type="text">
+            <input class="form-control" name="idproyecto" id="idproyecto" th:value="${proyecto.getIdproyecto()}" type="hidden"/>
 
             <div class="mb-3">
                 <label  class="form-label">Usuario Responsable</label><br/>
@@ -35,7 +36,7 @@
             <label class="form-label">Peso de la Actividad</label>
             <input class="form-control" name="peso" id="peso" type="text">
             <input name="estado" th:value="${0}" type="hidden">
-            <a th:href="@{'/proyectos/listar'}" class="btn btn-danger">Cancelar</a>
+            <a th:href="@{'/proyectos/editar?id='+${proyecto.getIdproyecto()}}" class="btn btn-danger">Cancelar</a>
             <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
     </body>
