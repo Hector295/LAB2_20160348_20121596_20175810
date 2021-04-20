@@ -43,9 +43,9 @@ public class ActividadesController {
     @PostMapping("/guardar")
     public String guardarActividad(Actividad actividad, RedirectAttributes attributes){
         if(actividad.getIdactividad()==0){
-            attributes.addFlashAttribute("mensaje","Usuario creado exitosamente");
+            attributes.addFlashAttribute("mensaje2","Usuario creado exitosamente");
         }else {
-            attributes.addFlashAttribute("mensaje","Usuario editado exitosamente");
+            attributes.addFlashAttribute("mensaje3","Usuario editado exitosamente");
         }
         actividadRepository.save(actividad);
         return "redirect:/proyecto/editarProyecto";
@@ -70,7 +70,7 @@ public class ActividadesController {
         Optional<Actividad> optionalActividad=actividadRepository.findById(id);
         if(optionalActividad.isPresent()){
             actividadRepository.deleteById(id);
-            attributes.addFlashAttribute("mensaje","Usuario borrado exitosamente");
+            attributes.addFlashAttribute("mensaje4","Usuario borrado exitosamente");
         }
         return "redirect:/proyectos/editar";
     }

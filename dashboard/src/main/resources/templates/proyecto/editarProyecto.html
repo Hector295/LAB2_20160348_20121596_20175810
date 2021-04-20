@@ -56,6 +56,7 @@
         <a class="btn btn-primary mt-4 mb-4">Nueva Actividad</a>
         <div th:if="${mensaje2 != null}" th:text="${mensaje2}" class="alert alert-success" role="alert"></div>
         <div th:if="${mensaje3 != null}" th:text="${mensaje3}" class="alert alert-danger" role="alert"></div>
+        <div th:if="${mensaje4!= null}" th:text="${mensaje4}" class="alert alert-warning" role="alert"></div>
         <table class="table table-sm">
             <tr>
                 <th>#</th>
@@ -68,7 +69,7 @@
             </tr>
             <tr th:each="actividad, info : ${listaActividades}">
                 <td th:text="${info.index + 1}"></td>
-                <td th:text="${actividad.getNombreactividad()}"></td>
+                <td th:text="${actividad.nombreactividad}"></td>
                 <td th:text="${actividad.getUsuario_owner()}"></td>
                 <td th:text="${actividad.getPeso()}"></td>
                 <td th:text="${actividad.isEstado()}"></td>
