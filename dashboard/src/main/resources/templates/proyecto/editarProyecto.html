@@ -26,8 +26,8 @@
             <div class="mb-3">
                 <label class="form-label">Area</label>
                 <select class="form-select" th:field="*{usuario_owner}">
-                    <option th:each="area : ${listaAreas}" th:value="${area.getIdarea()}"
-                            th:text="${area.getNombrearea()}"
+                    <option th:each="user : ${listaUsuario}" th:value="${user.getCorreo()}"
+                            th:text="${user.getNombres() +' '+ user.getApellidos()}"
                     ></option>
                 </select>
             </div>

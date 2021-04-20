@@ -41,7 +41,7 @@ public class ProyectosController {
 
     @PostMapping("/guardar")
     public String guardarProyecto(Proyecto proyecto, RedirectAttributes attributes){
-        if(proyecto.getNombreproyecto()==null){
+        if(proyecto.getIdproyecto()==0){
             attributes.addFlashAttribute("mensaje","Proyecto creado exitosamente");
         }else {
             attributes.addFlashAttribute("mensaje","Proyecto editado exitosamente");
@@ -58,9 +58,9 @@ public class ProyectosController {
             Proyecto proyecto = optionalProyecto.get();
             model.addAttribute("proyecto",proyecto);
             model.addAttribute("listaUsuario",usuarioRepository.findAll());
-            return "/proyecto/editarProyecto";
+            return "proyecto/editarProyecto";
         }else {
-            return "redirect:/proyectos";
+            return "redirect:/proyectos/listar";
         }
     }
 
