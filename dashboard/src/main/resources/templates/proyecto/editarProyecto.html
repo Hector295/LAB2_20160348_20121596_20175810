@@ -18,7 +18,7 @@
         </nav>
         <h2>Editar Proyecto</h2>
         <hr/>
-        <form method="post" th:action="@{/proyectos/guardar}" th:object="proyecto">
+        <form method="post" th:action="@{/proyectos/guardar}" th:object="${proyecto}">
             <div class="form-group">
                 <label class="form-label">Nombre del Proyecto</label>
                 <input th:field="*{nombreproyecto}"  type="text" class="form-control" />
