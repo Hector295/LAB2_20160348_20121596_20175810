@@ -23,7 +23,6 @@ public class ProyectosController {
 
     @Autowired
     ProyectoRepository proyectoRepository;
-
     @Autowired
     UsuarioRepository usuarioRepository;
 
@@ -36,8 +35,7 @@ public class ProyectosController {
 
     @GetMapping("/nuevo")
     public String nuevoProyecto(Model model) {
-        List<Usuario> listausuario= usuarioRepository.findAll();
-        model.addAttribute("listausuario",listausuario);
+        model.addAttribute("listaUsuarios",usuarioRepository.findAll());
         return "proyecto/nuevoProyecto";
     }
 
@@ -45,14 +43,16 @@ public class ProyectosController {
     public String guardarProyecto(Proyecto proyecto, RedirectAttributes attributes){
         if(proyecto.getNombreproyecto()==null){
             attributes.addFlashAttribute("mensaje","Proyecto creado exitosamente");
+        }else {
+            attributes.addFlashAttribute("mensaje","Usuario editado exitosamente");
         }
         proyectoRepository.save(proyecto);
-        return "redirect: /proyectos/listar";
+        return "redirect:/proyectos/listar";
     }
 
     @GetMapping("/editar")
     public String editarProyecto(Model model,
-                                @RequestParam("id") int id){
+                                 @RequestParam("id") int id){
         Optional<Proyecto> optionalProyecto=proyectoRepository.findById(id);
         if(optionalProyecto.isPresent()){
             Proyecto proyecto = optionalProyecto.get();
@@ -66,7 +66,7 @@ public class ProyectosController {
 
     @GetMapping("/eliminar")
     public String eliminarProyecto(@RequestParam("id") int id,
-                                  RedirectAttributes attributes){
+                                   RedirectAttributes attributes){
         Optional<Proyecto> optionalProyecto=proyectoRepository.findById(id);
         if(optionalProyecto.isPresent()){
             proyectoRepository.deleteById(id);
