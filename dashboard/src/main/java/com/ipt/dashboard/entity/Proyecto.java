@@ -1,22 +1,20 @@
 package com.ipt.dashboard.entity;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "proyectos")
 public class Proyecto {
 
     @Id
-    @Column(nullable = false)
-    private int proyectoid;
-    @Column
-    private String proyectonombre;
-    @Column(nullable = false)
-    private String usuariocorreo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idproyecto")
+    public int proyectoid;
+    @Column(name="nombreProyecto")
+    public String proyectonombre;
+    @Column(name="usuario_owner")
+    public String usuariocorreo;
 
     public int getProyectoid() {
         return proyectoid;
