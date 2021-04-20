@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.jws.WebParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +41,9 @@ public class ProyectosController {
     }
 
     @PostMapping("/guardar")
-    public String guardarProyecto(Proyecto proyecto, RedirectAttributes attributes) {
+    public String guardarProyecto(Proyecto proyecto,
+                                  RedirectAttributes attributes) {
+        System.out.println(proyecto.getIdproyecto());
         if (proyecto.getIdproyecto() == 0) {
             attributes.addFlashAttribute("mensaje", "Proyecto creado exitosamente");
         } else {
@@ -51,9 +54,10 @@ public class ProyectosController {
     }
 
     @GetMapping("/editar")
-    public String editarProyecto(Model model,
-                                 @RequestParam("id") int id) {
+    public String editarProyecto(@RequestParam("id") int id,
+                                    Model model) {
         Optional<Proyecto> optionalProyecto = proyectoRepository.findById(id);
+
         if (optionalProyecto.isPresent()) {
             Proyecto proyecto = optionalProyecto.get();
             model.addAttribute("proyecto", proyecto);
@@ -71,7 +75,7 @@ public class ProyectosController {
         Optional<Proyecto> optionalProyecto = proyectoRepository.findById(id);
         if (optionalProyecto.isPresent()) {
             proyectoRepository.deleteById(id);
-            attributes.addFlashAttribute("mensaje", "Proyecto borrado exitosamente");
+            attributes.addFlashAttribute("mensaje1", "Proyecto borrado exitosamente");
         }
         return "redirect:/proyectos/listar";
     }
