@@ -31,6 +31,7 @@ public class ProyectosController {
     ActividadRepository actividadRepository;
 
 
+
     @GetMapping("/listar")
     public String proyectoList(Model model) {
         model.addAttribute("proyectoList", proyectoRepository.findAll());
