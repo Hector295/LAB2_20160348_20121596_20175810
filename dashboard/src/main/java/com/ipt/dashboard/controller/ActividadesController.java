@@ -58,7 +58,7 @@ public class ActividadesController {
         model.addAttribute("listaUsuarios",lista);
         if(optionalActividad.isPresent()){
             Actividad actividad = optionalActividad.get();
-            model.addAttribute("usuario",actividad);
+            model.addAttribute("actividad",actividad);
             return "actividad/editarActividad";
         }else {
             return "redirect:/proyectos/editar";
