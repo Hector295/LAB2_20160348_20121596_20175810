@@ -34,7 +34,7 @@
                 </select>
             </div>
             <label class="form-label">Peso de la Actividad</label>
-            <input class="form-control" name="peso" id="peso" type="text">
+            <input class="form-control" name="peso" id="peso" th:value="${'0.0'}" type="text">
             <input name="estado" th:value="${0}" type="hidden">
             <a th:href="@{'/proyectos/editar?id='+${proyecto.getIdproyecto()}}" class="btn btn-danger">Cancelar</a>
             <button type="submit" class="btn btn-primary">Registrar</button>
