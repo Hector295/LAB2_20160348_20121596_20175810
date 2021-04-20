@@ -21,13 +21,14 @@
         <th></th>
         <th></th>
     </tr>
-    <tr th:each="">
-        <td th:text="${info.index + 1}"></td>
-        <td th:text="${e}"></td>
-        <td th:text="${shipper.phone}"></td>
-        <td><a class="btn btn-primary" th:href="@{'/shipper/edit' + '?id=' + ${shipper.shipperId}}">Editar</a>
+    <tr th:each="usuario,inf : ${listaUsuarios}">
+        <td th:text="${inf.index + 1}"></td>
+        <td th:text="${usuario.correo}"></td>
+        <td th:text="${usuario.nombres}"></td>
+        <td th:text="${usuario.apellidos}"></td>
+        <td><a class="btn btn-primary" th:href="@{'/usuario/editar' + '?correo=' + ${usuario.correo}}">Editar</a>
         </td>
-        <td><a class="btn btn-danger" th:href="@{'/shipper/delete' + '?id=' + ${shipper.shipperId}}">Borrar</a>
+        <td><a class="btn btn-danger" th:href="@{'/usuario/eliminar' + '?correo=' + ${usuario.correo}}">Borrar</a>
         </td>
     </tr>
 </table>

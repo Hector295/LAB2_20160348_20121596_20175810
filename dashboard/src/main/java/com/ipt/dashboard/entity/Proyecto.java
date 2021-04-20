@@ -7,13 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "proyectos")
+@Table(name ="proyectos")
 public class Proyecto {
 
     @Id
     @Column(nullable = false)
     private int proyectoid;
-    @Column
     private String proyectonombre;
     @Column(nullable = false)
     private String usuariocorreo;

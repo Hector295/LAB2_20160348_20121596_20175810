@@ -23,6 +23,6 @@ public class ProyectosController {
         List<Proyecto> list = proyectoRepository.findAll();
 
         model.addAttribute("proyectoList", list);
-        return "/proyecto/listaProyectos";
+        return "proyecto/listaProyectos";
     }
 }

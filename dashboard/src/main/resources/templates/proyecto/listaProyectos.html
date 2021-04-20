@@ -32,8 +32,8 @@
         <td th:text="${proyecto.getProyectoid()}"></td>
         <td th:text="${proyecto.getProyectonombre()}"></td>
         <td th:text="${proyecto.getUsuariocorreo()}"></td>
-        <td><a class="btn btn-warning" th:href="@{'/territory/edit?id=' + ${territory.getTerritoryid()}}">Edit</a></td>
-        <td><a class="btn btn-danger" th:href="@{'/territory/delete?id=' + ${territory.getTerritoryid()}}">Delete</a></td>
+        <td><a class="btn btn-warning" th:href="@{'/territory/edit?id=' + ${proyecto.getProyectoid()}}">Edit</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/territory/delete?id=' + ${proyecto.getProyectoid()}}">Delete</a></td>
   </tr>
 </table>
 </body>
