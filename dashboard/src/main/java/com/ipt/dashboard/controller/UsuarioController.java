@@ -1,6 +1,8 @@
 package com.ipt.dashboard.controller;
 
+import com.ipt.dashboard.entity.Areas;
 import com.ipt.dashboard.entity.Usuario;
+import com.ipt.dashboard.repository.AreasRepository;
 import com.ipt.dashboard.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,16 +21,20 @@ import java.util.Optional;
 public class UsuarioController {
     @Autowired
     UsuarioRepository usuarioRepository;
+    @Autowired
+    AreasRepository areasRepository;
 
     @GetMapping({"","/list"})
     public String listarUsaurios(Model model){
         List<Usuario> lista = usuarioRepository.findAll();
         model.addAttribute("listaUsuarios",lista);
-    return "/proyecto/usuario/listaUsuario";
+    return "/usuario/listaUsuario";
     }
     @GetMapping("/nuevo")
-    public String nuevoUsuario() {
-        return "usuario/nuevoUsuario";
+    public String nuevoUsuario(Model model) {
+        List<Areas> lista = areasRepository.findAll();
+        model.addAttribute("listaAreas",lista);
+        return "/usuario/nuevoUsuario";
     }
 
     @PostMapping("/guardar")
@@ -39,16 +45,18 @@ public class UsuarioController {
             attributes.addFlashAttribute("mensaje","Usuario editado exitosamente");
         }
         usuarioRepository.save(usuario);
-        return "redirect: /usuario/list";
+        return "redirect:/usuario/list";
     }
     @GetMapping("/editar")
     public String editarUsuario(Model model,
                                 @RequestParam("correo") String correo){
         Optional<Usuario> optionalUsuario=usuarioRepository.findById(correo);
+        List<Areas> lista = areasRepository.findAll();
+        model.addAttribute("listaAreas",lista);
         if(optionalUsuario.isPresent()){
             Usuario usuario = optionalUsuario.get();
             model.addAttribute("usuario",usuario);
-            return "/proyecto/usuario/editarUsuario";
+            return "usuario/editarUsuario";
         }else {
             return "redirect:/usuario";
         }

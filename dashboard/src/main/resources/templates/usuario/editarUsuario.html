@@ -9,26 +9,37 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse">
+        <a class="navbar-brand" th:href="@{/proyectos/listar}">Proyectos</a>
+        <a class="navbar-brand" th:href="@{/usuario/list}">Usuarios</a>
+        <a class="navbar-brand" th:href="@{/area/listar}">Areas</a>
+    </div>
+</nav>
 <h2>Editar Usuario</h2>
 <hr/>
-<form method="post" th:action="@{'/usuario/guardar'}">
+<form method="post" th:action="@{/usuario/guardar}" th:object="${usuario}">
     <div class="form-group">
-        <label for="correo">Correo del Usuario</label>
-        <input th:value="${usuario.correo}" name="correo" type="text" class="form-control" id="correo" />
+        <label class="form-label">Correo del Usuario</label>
+        <input th:field="*{correo}"  type="text" class="form-control" />
     </div>
     <div class="mb-3">
         <label class="form-label">Area</label>
-        <select class="form-select" th:field="*{area}">
-            <option th:each="area : ${listaCategorias}" th:value="${categoria.id}"
-                    th:text="${categoria.categoryname}"
-                    th:selected="${categoria.id == product.category.id}"></option>
+        <select class="form-select" th:field="*{idarea}">
+            <option th:each="area : ${listaAreas}" th:value="${area.getIdarea()}"
+                    th:text="${area.getNombrearea()}"
+                    ></option>
         </select>
     </div>
     <div class="form-group">
-        <label for="phone">Teléfono</label>
-        <input th:value="${shipper.phone}" name="phone" type="text" class="form-control" id="phone" />
+        <label >Nombres del Usuario</label>
+        <input th:field="*{nombres}" type="text" class="form-control" />
     </div>
-    <a th:href="@{'/shipper/list'}" class="btn btn-danger">Cancelar</a>
+    <div class="form-group">
+        <label >Apellidos del Usuario</label>
+        <input th:field="*{apellidos}"  type="text" class="form-control" />
+    </div>
+    <a th:href="@{'/usuario/list'}" class="btn btn-danger">Cancelar</a>
     <button type="submit" class="btn btn-primary">Actualizar</button>
 </form>
 </body>
