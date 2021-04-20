@@ -27,7 +27,13 @@
         <th></th>
         <th></th>
     </tr>
-    <tr th:each="proyecto, info : ${listaProyectos}">
+    <tr th:each="proyecto, info : ${proyectoList}">
+        <td th:text="${info.index + 1}"></td>
+        <td th:text="${proyecto.getProyectoid()}"></td>
+        <td th:text="${proyecto.getProyectonombre()}"></td>
+        <td th:text="${proyecto.getUsuariocorreo()}"></td>
+        <td><a class="btn btn-warning" th:href="@{'/territory/edit?id=' + ${territory.getTerritoryid()}}">Edit</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/territory/delete?id=' + ${territory.getTerritoryid()}}">Delete</a></td>
   </tr>
 </table>
 </body>
