@@ -2,6 +2,7 @@ package com.ipt.dashboard.controller;
 
 import com.ipt.dashboard.entity.Areas;
 import com.ipt.dashboard.repository.AreasRepository;
+import com.ipt.dashboard.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,9 @@ public class AreasController {
 
     @Autowired
     AreasRepository areasRepository;
+
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
     @GetMapping(value={"", "/listar"})
     public String listaAreas (Model model){
@@ -52,6 +56,7 @@ public class AreasController {
         if(shipperOpt.isPresent()){
             Areas area = shipperOpt.get();
             model.addAttribute("areaEditable",area);
+            model.addAttribute("listaUsuarios", usuarioRepository.filtrarUsuariosPorId(id));
             return "areas/editForm"; //Ruta del directorio del html
         }else{
             return "redirect:/areas/listar"; //Redirige al controlador areas/
