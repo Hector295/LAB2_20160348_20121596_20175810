@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Proyectos</title>
+    <title>Lista de Areas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -27,14 +27,8 @@
         <th></th>
         <th></th>
     </tr>
-    <tr th:each="proyecto, info : ${proyectoList}">
-        <td th:text="${info.index + 1}"></td>
-        <td th:text="${proyecto.getProyectoid()}"></td>
-        <td th:text="${proyecto.getProyectonombre()}"></td>
-        <td th:text="${proyecto.getUsuariocorreo()}"></td>
-        <td><a class="btn btn-warning" th:href="@{'/territory/edit?id=' + ${territory.getTerritoryid()}}">Edit</a></td>
-        <td><a class="btn btn-danger" th:href="@{'/territory/delete?id=' + ${territory.getTerritoryid()}}">Delete</a></td>
-  </tr>
+    <tr th:each="proyecto, info : ${listaProyectos}">
+    </tr>
 </table>
 </body>
 </html>
