@@ -22,8 +22,13 @@
 
     <label class="small mb-1">Nombre del Proyecto</label>
     <input class="form-control" name="nombreproyecto" id="nombreproyecto" type="text">
-    <label class="small mb-1">Usuario Responsable</label>
-    <input class="form-control" name="usuario_owner" id="usuario_owner" type="text">
+    <div class="mb-3">
+        <label for="usuario_owner" class="form-label">Usuario Responsable</label>
+        <select class="form-select" name="usuario_owner" id="usuario_owner">
+            <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.getCorreo()}"
+                    th:text="${usuario.getNombres() +' '+ usuario.getApellidos()}"></option>
+        </select>
+    </div>
 
     <a th:href="@{'/proyectos/listar'}" class="btn btn-danger">Cancelar</a>
     <button type="submit" class="btn btn-primary">Registrar</button>

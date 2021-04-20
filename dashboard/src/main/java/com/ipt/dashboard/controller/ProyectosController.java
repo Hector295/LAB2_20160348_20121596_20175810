@@ -23,6 +23,8 @@ public class ProyectosController {
 
     @Autowired
     ProyectoRepository proyectoRepository;
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
 
     @GetMapping("/listar")
@@ -32,7 +34,8 @@ public class ProyectosController {
     }
 
     @GetMapping("/nuevo")
-    public String nuevoProyecto() {
+    public String nuevoProyecto(Model model) {
+        model.addAttribute("listaUsuarios",usuarioRepository.findAll());
         return "proyecto/nuevoProyecto";
     }
 
@@ -40,9 +43,11 @@ public class ProyectosController {
     public String guardarProyecto(Proyecto proyecto, RedirectAttributes attributes){
         if(proyecto.getNombreproyecto()==null){
             attributes.addFlashAttribute("mensaje","Proyecto creado exitosamente");
+        }else {
+            attributes.addFlashAttribute("mensaje","Usuario editado exitosamente");
         }
         proyectoRepository.save(proyecto);
-        return "redirect: /proyectos/listar";
+        return "redirect:/proyectos/listar";
     }
 
     @GetMapping("/editar")
